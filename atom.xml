@@ -6,7 +6,7 @@
   <link href="https://listenwaves.github.io/atom.xml" rel="self"/>
   
   <link href="https://listenwaves.github.io/"/>
-  <updated>2024-06-06T09:19:02.804Z</updated>
+  <updated>2024-06-06T09:27:55.597Z</updated>
   <id>https://listenwaves.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://listenwaves.github.io/2024/06/06/%E5%AE%89%E8%A3%85hexo-tag-aplayer%E5%90%8E%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     <id>https://listenwaves.github.io/2024/06/06/%E5%AE%89%E8%A3%85hexo-tag-aplayer%E5%90%8E%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</id>
     <published>2024-06-06T08:36:38.000Z</published>
-    <updated>2024-06-06T09:19:02.804Z</updated>
+    <updated>2024-06-06T09:27:55.597Z</updated>
     
     <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>使用 <strong>hexo-tag-aplayer</strong> 插件后，博客最上方的导航栏在点击一次后会消失不见</p><p><img src="https://s2.loli.net/2024/06/06/duFB3DTbvyHRhXG.png"></p><p><strong>F5</strong> 页面刷新后导航栏能正常显示，但再次点击任一按钮后导航栏又消失不见。</p><p><img src="https://s2.loli.net/2024/06/06/5X8oinLNq7Q4Yyj.png"></p><p>查看控制台发现如下错误：</p><p><strong>RangeError:Maximum call stack size exceeded at loadMeting</strong> 栈溢出</p><h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h1><p>询问 <strong>butterfly</strong> 主题开发者 <strong>jerryc127</strong> 得到如下解决方案</p><p>修改主题 <strong>themes\butterfly\layout\includes\third-party\aplayer.pug</strong> 文件如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">link(rel=&#x27;stylesheet&#x27; href=url_for(theme.asset.aplayer_css) media=&quot;print&quot; onload=&quot;this.media=&#x27;all&#x27;&quot;)</span><br><span class="line">script(src=url_for(theme.asset.aplayer_js))</span><br><span class="line">script(src=url_for(theme.asset.meting_js))</span><br><span class="line">if theme.pjax.enable</span><br><span class="line">  script.</span><br><span class="line">    (() =&gt; &#123;</span><br><span class="line">      const destroyAplayer = () =&gt; &#123;</span><br><span class="line">        if (window.aplayers) &#123;</span><br><span class="line">          for (let i = 0; i &lt; window.aplayers.length; i++) &#123;</span><br><span class="line">            if (!window.aplayers[i].options.fixed) &#123;</span><br><span class="line">              window.aplayers[i].destroy()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      const runLoadMeting = () =&gt; &#123;</span><br><span class="line">        typeof loadMeting === &#x27;function&#x27; &amp;&amp; document.getElementsByClassName(&#x27;aplayer&#x27;).length &amp;&amp; loadMeting()</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      btf.addGlobalFn(&#x27;pjaxSend&#x27;, destroyAplayer, &#x27;destroyAplayer&#x27;)</span><br><span class="line">      btf.addGlobalFn(&#x27;pjaxComplete&#x27;, loadMeting, &#x27;runLoadMeting&#x27;)</span><br><span class="line">    &#125;)()</span><br></pre></td></tr></table></figure><p>问题解决。</p>]]></content>
     
@@ -45,9 +45,9 @@
     <link href="https://listenwaves.github.io/2024/06/04/%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%9C%A8%E5%8D%9A%E5%AE%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://listenwaves.github.io/2024/06/04/%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%9C%A8%E5%8D%9A%E5%AE%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</id>
     <published>2024-06-04T02:19:49.000Z</published>
-    <updated>2024-06-06T09:10:11.254Z</updated>
+    <updated>2024-06-06T09:27:57.946Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>在参考 <a href="https://hexo.io/">Hexo</a> 与 <a href="https://butterfly.js.org/">butterfly</a> 配置文档后，初步成功搭建了博客网站并部署到 <strong>Github</strong> 上，但 <a href="https://sm.ms/">SM.MS</a> 图床上的图片无法加载。</p><p>检查图片链接能正常访问，但 <strong>F12</strong> 查看网页源代码，发现无挂载图片资源，尝试诸多方法最终解决该问题。</p><h2 id="可能原因"><a href="#可能原因" class="headerlink" title="可能原因"></a>可能原因</h2><h3 id="防盗链"><a href="#防盗链" class="headerlink" title="防盗链"></a>防盗链</h3><p>图床可能开启了防盗链机制，对<strong>\themes\butterfly\layout\includes</strong>目录下的<strong>head.pug</strong>文件修改其 <strong>meta</strong> 信息，使所有页面带有该 <strong>head</strong> 。</p><p>在<strong>head.pug</strong>文件中添加以下内容</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meta(<span class="attribute">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attribute">content</span>=<span class="string">&quot;no-referrer&quot;</span>)</span><br></pre></td></tr></table></figure><p>并未解决问题。</p><h3 id="Github分支"><a href="#Github分支" class="headerlink" title="Github分支"></a>Github分支</h3><p>目前Github的默认分支为main，而hexo配置文件_config.yml中branch填写为master，因此将Github默认分支更改为master，并且删除该仓库下的main分支（否则active分支仍为main），重新部署。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>最终解决问题。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>在参考 <a href="https://hexo.io/">Hexo</a> 与 <a href="https://butterfly.js.org/">butterfly</a> 配置文档后，初步成功搭建了博客网站并部署到 Github 上，但 <a href="https://sm.ms/">SM.MS</a> 图床上的图片无法加载。</p><p>检查图片链接能正常访问，但 F12 查看网页源代码，发现无挂载图片资源，尝试诸多方法最终解决该问题。</p><h2 id="可能原因"><a href="#可能原因" class="headerlink" title="可能原因"></a>可能原因</h2><h3 id="防盗链"><a href="#防盗链" class="headerlink" title="防盗链"></a>防盗链</h3><p>图床可能开启了防盗链机制，对<strong>\themes\butterfly\layout\includes</strong>目录下的<strong>head.pug</strong>文件修改其 meta 信息，使所有页面带有该 head 。</p><p>在<strong>head.pug</strong>文件中添加以下内容</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meta(name=&quot;referrer&quot; content=&quot;no-referrer&quot;)</span><br></pre></td></tr></table></figure><p>并未解决问题。</p><h3 id="Github分支"><a href="#Github分支" class="headerlink" title="Github分支"></a>Github分支</h3><p>目前 Github 的默认分支为 main，而 hexo 配置文件 _config.yml 中 branch 填写为 master ，因此将 Github 默认分支更改为 master ，并且删除该仓库下的 main 分支（否则 active 分支仍为 main ），重新部署。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>最终解决问题。</p>]]></content>
     
     
       
@@ -61,26 +61,6 @@
     
     
     <category term="hexo" scheme="https://listenwaves.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://listenwaves.github.io/2024/06/03/hello-world/"/>
-    <id>https://listenwaves.github.io/2024/06/03/hello-world/</id>
-    <published>2024-06-03T07:30:02.080Z</published>
-    <updated>2024-06-05T01:02:45.471Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2024/06/05/dx93ZtrUhIpR15e.jpg"></p><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
