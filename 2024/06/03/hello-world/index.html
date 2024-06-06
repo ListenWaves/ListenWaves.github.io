@@ -250,12 +250,12 @@
     }
   }
 
-  const loadMeting = () => {
+  const runLoadMeting = () => {
     typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
   }
 
   btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
-  btf.addGlobalFn('pjaxComplete', loadMeting, 'loadMeting')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runLoadMeting')
 })()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
 var pjax = new Pjax({
