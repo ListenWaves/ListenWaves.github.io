@@ -6,7 +6,7 @@
   <link href="https://listenwaves.github.io/atom.xml" rel="self"/>
   
   <link href="https://listenwaves.github.io/"/>
-  <updated>2024-06-07T01:34:38.920Z</updated>
+  <updated>2024-06-12T09:43:04.840Z</updated>
   <id>https://listenwaves.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>两种新型互补自偏置差分放大器介绍</title>
+    <link href="https://listenwaves.github.io/2024/06/12/%E4%B8%A4%E7%A7%8D%E6%96%B0%E5%9E%8B%E4%BA%92%E8%A1%A5%E8%87%AA%E5%81%8F%E7%BD%AE%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://listenwaves.github.io/2024/06/12/%E4%B8%A4%E7%A7%8D%E6%96%B0%E5%9E%8B%E4%BA%92%E8%A1%A5%E8%87%AA%E5%81%8F%E7%BD%AE%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/</id>
+    <published>2024-06-12T09:26:29.000Z</published>
+    <updated>2024-06-12T09:43:04.840Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="完全互补自偏置CMOS差分放大器"><a href="#完全互补自偏置CMOS差分放大器" class="headerlink" title="完全互补自偏置CMOS差分放大器"></a>完全互补自偏置CMOS差分放大器</h1><blockquote><p>Ref：<a href="https://ieeexplore.ieee.org/document/68134">Bazes M. Two novel fully complementary self-biased CMOS differential amplifiers[J]. IEEE Journal of Solid-State Circuits, 1991, 26(2): 165-168.</a></p></blockquote><h2 id="CSDA"><a href="#CSDA" class="headerlink" title="CSDA"></a>CSDA</h2><p><strong>CSDA</strong> (<code>complementary self-biased differential amplifier</code>)互补自偏置差分放大器</p><p>该电路结构演化过程如下图所示：</p><p><img src="https://s2.loli.net/2024/06/12/spNcm9fUikbH8BI.png"></p><p>首先，图(a)PMOS输入与NMOS输入的经典五管OTA结构去除电流镜负载后，可得到图(b)所示的结构，该结构的两外部偏置信号无法提供完全相等的电流，去除外部偏置后最终得到图(c)所示的CSDA结构。</p><p>提供尾电流的M3、M4需工作于线性区，以提高输出电压摆幅。</p><p>CSDA相对于经典五管OTA结构差模增益变为2倍(+6dB)。</p><p>CSDA由于能够提高大的输出开关电流，因此适用于高速比较器应用。</p><h2 id="VCDA"><a href="#VCDA" class="headerlink" title="VCDA"></a>VCDA</h2><p><strong>VCDA</strong> (<code>very-wide-common-mode-range differential amplifier</code>)宽共模输入范围差分放大器</p><p><img src="https://s2.loli.net/2024/06/12/zw6S72t5RmXEjr4.png"></p><p>该电路结构演化过程类似：去除负载，去除外部偏置</p><p>差模增益也为OTA的2倍</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>CSDA与VCDA均是n-p互补的，并且通过负反馈提供自偏置，因此性能上有所提升：</p><p>1）有源区偏置对PVT变化的敏感性较低</p><p>2）能够提供比静态偏置电流大得多的开关电流</p><p>3）差模增益加倍(+6dB)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;完全互补自偏置CMOS差分放大器&quot;&gt;&lt;a href=&quot;#完全互补自偏置CMOS差分放大器&quot; class=&quot;headerlink&quot; title=&quot;完全互补自偏置CMOS差分放大器&quot;&gt;&lt;/a&gt;完全互补自偏置CMOS差分放大器&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;R</summary>
+      
+    
+    
+    
+    <category term="文献阅读" scheme="https://listenwaves.github.io/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
+    
+    
+    <category term="比较器" scheme="https://listenwaves.github.io/tags/%E6%AF%94%E8%BE%83%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>安装hexo-tag-aplayer后导航栏不显示的问题解决</title>
