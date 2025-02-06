@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'NotoSansSC_Thin';
+    font-display: swap;
+    src: url('NotoSansSC_Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NotoSansSC_Regular';
+    font-display: swap;
+    src: url('NotoSansSC_Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NotoSansSC_Light';
+    font-display: swap;
+    src: url('NotoSansSC_Light.ttf') format('truetype');
+}
